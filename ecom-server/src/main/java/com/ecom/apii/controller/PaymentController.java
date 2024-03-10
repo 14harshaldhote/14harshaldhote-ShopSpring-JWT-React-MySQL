@@ -27,10 +27,10 @@ import com.ecom.apii.user.domain.OrderStatus;
 import com.ecom.apii.user.domain.PaymentStatus;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.razorpay.Payment;
-//import com.razorpay.PaymentLink;
-//import com.razorpay.RazorpayClient;
-//import com.razorpay.RazorpayException;
+import com.razorpay.Payment;
+import com.razorpay.PaymentLink;
+import com.razorpay.RazorpayClient;
+import com.razorpay.RazorpayException;
 
 @RestController
 @RequestMapping("/api")
