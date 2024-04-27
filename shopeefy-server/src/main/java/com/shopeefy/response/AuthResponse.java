@@ -31,8 +31,8 @@ public class AuthResponse {
 		this.message = message;
 	}
 
-	
-	
+//	
+//	
 //	private String jwt;
 //	
 //	private boolean status;
@@ -62,7 +62,7 @@ public class AuthResponse {
 //	public void setStatus(boolean status) {
 //		this.status = status;
 //	}
-//	
+	
 	
 
 }

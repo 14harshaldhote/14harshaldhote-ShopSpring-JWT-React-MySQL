@@ -43,6 +43,24 @@ public class OrderItem {
 	public OrderItem() {
 		// TODO Auto-generated constructor stub
 	}
+	
+
+
+
+	public OrderItem(Long id, Order order, Product product, String size, int quantity, Integer price,
+			Integer discountedPrice, Long userId, LocalDateTime deliveryDate) {
+		super();
+		this.id = id;
+		this.order = order;
+		this.product = product;
+		this.size = size;
+		this.quantity = quantity;
+		this.price = price;
+		this.discountedPrice = discountedPrice;
+		this.userId = userId;
+		this.deliveryDate = deliveryDate;
+	}
+
 
 
 

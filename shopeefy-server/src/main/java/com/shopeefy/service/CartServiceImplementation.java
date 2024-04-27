@@ -30,8 +30,8 @@ public class CartServiceImplementation implements CartService{
 		
 		Cart cart = new Cart();
 		cart.setUser(user);
-		Cart createdCart=cartRepository.save(cart);
-		return createdCart;
+//		Cart createdCart=cartRepository.save(cart);
+		return cartRepository.save(cart);
 	}
 	
 	public Cart findUserCart(Long userId) {
@@ -45,15 +45,17 @@ public class CartServiceImplementation implements CartService{
 			totalItem+=cartsItem.getQuantity();
 		}
 		
-		cart.setTotalPrice(totalPrice);
 		cart.setTotalItem(cart.getCartItems().size());
 		cart.setTotalDiscountedPrice(totalDiscountedPrice);
-		cart.setDiscounte(totalPrice-totalDiscountedPrice);
 		cart.setTotalItem(totalItem);
+		cart.setTotalPrice(totalPrice);
+		cart.setDiscounte(totalPrice-totalDiscountedPrice);
 		
 		return cartRepository.save(cart);
 		
 	}
+	
+
 
 	@Override
 	public CartItem addCartItem(Long userId, AddItemRequest req) throws ProductException {

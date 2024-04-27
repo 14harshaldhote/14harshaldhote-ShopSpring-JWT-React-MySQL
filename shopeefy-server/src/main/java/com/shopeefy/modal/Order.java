@@ -66,6 +66,31 @@ public class Order {
     public Order() {
 		
 	}
+    
+    
+
+	public Order(Long id, String orderId, User user, List<OrderItem> orderItems, LocalDateTime orderDate,
+			LocalDateTime deliveryDate, Address shippingAddress, PaymentDetails paymentDetails, double totalPrice,
+			Integer totalDiscountedPrice, Integer discounte, OrderStatus orderStatus, int totalItem,
+			LocalDateTime createdAt) {
+		super();
+		this.id = id;
+		this.orderId = orderId;
+		this.user = user;
+		this.orderItems = orderItems;
+		this.orderDate = orderDate;
+		this.deliveryDate = deliveryDate;
+		this.shippingAddress = shippingAddress;
+		this.paymentDetails = paymentDetails;
+		this.totalPrice = totalPrice;
+		this.totalDiscountedPrice = totalDiscountedPrice;
+		this.discounte = discounte;
+		this.orderStatus = orderStatus;
+		this.totalItem = totalItem;
+		this.createdAt = createdAt;
+	}
+
+
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;

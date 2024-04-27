@@ -10,6 +10,15 @@ public class AddItemRequest {
 	public AddItemRequest() {
 		
 	}
+	
+	public AddItemRequest(Long productId, String size, int quantity, Integer price) {
+		super();
+		this.productId = productId;
+		this.size = size;
+		this.quantity = quantity;
+		this.price = price;
+	}
+
 	public Long getProductId() {
 		return productId;
 	}

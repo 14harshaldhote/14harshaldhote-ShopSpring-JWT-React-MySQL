@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import com.shopeefy.exception.ProductException;
 import com.shopeefy.modal.Product;
 import com.shopeefy.request.CreateProductRequest;
-import com.shopeefy.user.domain.ProductSubCategory;
+//import com.shopeefy.user.domain.ProductSubCategory;
 
 public interface ProductService {
 	

@@ -8,7 +8,7 @@ import TearmsCondition from "../Pages/TearmsCondition";
 import About from "../Pages/About";
 import Homepage from "../Pages/Homepage";
 import Navigation from "../customer/Components/Navbar/Navigation";
-import Cart from "../customer/Components/Cart/Cart";
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Button} from "@mui/material";
 import { customTheme, customerTheme } from "../Admin/them/customeThem";
@@ -18,7 +18,10 @@ import Checkout from "../customer/Components/Checkout/Checkout";
 import Footer from "../customer/Components/footer/Footer";
 import PaymentSuccess from "../customer/Components/paymentSuccess/PaymentSuccess";
 import RateProduct from "../customer/Components/ReviewProduct/RateProduct";
-import PrivacyPolicy from "../Pages/PrivacyPolicy";
+import Cart from "../customer/Components/Cart/Cart";
+// import CartItem from "../customer/Components/Cart/CartItem";
+// import PrivacyPolicy from "../Pages/PrivacyPolicy";
+// import PrivacyPolicy from "../Pages/PrivacyPolicy";
 
 const CustomerRoutes = () => {
     const location = useLocation();
@@ -41,12 +44,12 @@ const CustomerRoutes = () => {
         <Route path="/home" element={<Homepage />}></Route>
         <Route path="/about" element={<About />}></Route>
         {/* <Route path="/privaciy-policy" element={<PrivacyPolicy />}></Route> */}
-        <Route path="/privaciy-policy" element={<PrivacyPolicy/>}></Route>
+        {/* <Route path="/privaciy-policy" element={<PrivacyPolicy />}></Route> */}
         <Route path="/terms-condition" element={<TearmsCondition />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/:lavelOne/:lavelTwo/:lavelThree" element={<Product />}></Route>
         <Route path="/product/:productId" element={<ProductDetails />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/cart" element={<Cart/>}></Route>
         <Route path="/account/order" element={<Order />}></Route>
         <Route path="/account/order/:orderId" element={<OrderDetails />}></Route>
         <Route path="/account/rate/:productId" element={<RateProduct />}></Route>

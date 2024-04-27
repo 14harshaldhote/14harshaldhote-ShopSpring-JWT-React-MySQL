@@ -22,8 +22,10 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne(fetch = FetchType.LAZY)
+    
+    
+//    (fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
@@ -61,16 +63,19 @@ public class Cart {
 	public void setTotalDiscountedPrice(int totalDiscountedPrice) {
 		this.totalDiscountedPrice = totalDiscountedPrice;
 	}
+
+	
+
+	public Long getId() {
+		return id;
+	}
+
 	public int getDiscounte() {
 		return discounte;
 	}
 
 	public void setDiscounte(int discounte) {
 		this.discounte = discounte;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 	public void setId(Long id) {
@@ -89,8 +94,15 @@ public class Cart {
 		return cartItems;
 	}
 
+//	public void setCartItems(Set<CartItem> cartItems) {
+//		this.cartItems = cartItems;
+//	}
+
 	public void setCartItems(Set<CartItem> cartItems) {
-		this.cartItems = cartItems;
+	    this.cartItems = cartItems;
+	    for (CartItem cartItem : cartItems) {
+	        cartItem.setCart(this); // Set the Cart object for each CartItem
+	    }
 	}
 
 	public double getTotalPrice() {

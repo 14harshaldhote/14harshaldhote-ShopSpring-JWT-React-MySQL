@@ -46,7 +46,7 @@ public class AuthController {
 	
 	@PostMapping("/signup")
 	public ResponseEntity<AuthResponse> createUserHandler(@Valid @RequestBody User user) throws UserException{
-//		
+		
 //		  	String email = user.getEmail();
 //	        String password = user.getPassword();
 //	        String firstName=user.getFirstName();
@@ -100,7 +100,10 @@ public class AuthController {
 			createdUser.setFirstName(firstString);
 			createdUser.setLastName(lastNString);
 
+			
 			User savedUser = userRepository.save(createdUser);
+			
+			Cart cart=cartService.createCart(savedUser);
 
 			Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(),
 					savedUser.getPassword());
@@ -149,25 +152,25 @@ public class AuthController {
 	private Authentication authenticate(String username, String password) {
         UserDetails userDetails = customUserDetails.loadUserByUsername(username);
         
-//        System.out.println("sign in userDetails - "+userDetails);
+        System.out.println("sign in userDetails - "+userDetails);
         
-//        if (userDetails == null) {
-//        	System.out.println("sign in userDetails - null " + userDetails);
-//            throw new BadCredentialsException("Invalid username or password");
-//        }
-//        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
-//        	System.out.println("sign in userDetails - password not match " + userDetails);
-//            throw new BadCredentialsException("Invalid username or password");
-//        }
-//        return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         if (userDetails == null) {
-			throw new BadCredentialsException("invalid userName");
-
-		}
-		if (!passwordEncoder.matches(password, userDetails.getPassword())) {
-			throw new BadCredentialsException("invalid password...");
-		}
-
-		return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        	System.out.println("sign in userDetails - null " + userDetails);
+            throw new BadCredentialsException("Invalid username or password");
+        }
+        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+        	System.out.println("sign in userDetails - password not match " + userDetails);
+            throw new BadCredentialsException("Invalid username or password");
+        }
+        return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+//        if (userDetails == null) {
+//			throw new BadCredentialsException("invalid userName");
+//
+//		}
+//		if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+//			throw new BadCredentialsException("invalid password...");
+//		}
+//
+//		return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
 }

@@ -29,14 +29,20 @@ public class AdminProductController {
 		this.productService = productService;
 	}
 	
-	@PostMapping("/")
-	public ResponseEntity<Product> createProductHandler(@RequestBody CreateProductRequest req) throws ProductException{
-		
-		Product createdProduct = productService.createProduct(req);
-		
-		return new ResponseEntity<Product>(createdProduct,HttpStatus.ACCEPTED);
-		
+//	@PostMapping("/")
+//	public ResponseEntity<Product> createProductHandler(@RequestBody CreateProductRequest req) throws ProductException{
+//		
+//		Product createdProduct = productService.createProduct(req);
+//		
+//		return new ResponseEntity<Product>(createdProduct,HttpStatus.ACCEPTED);
+//		
+//	}
+	@PostMapping("")
+	public ResponseEntity<Product> createProductHandler(@RequestBody CreateProductRequest req) throws ProductException {
+	    Product createdProduct = productService.createProduct(req);
+	    return new ResponseEntity<Product>(createdProduct, HttpStatus.CREATED);
 	}
+
 	
 	@DeleteMapping("/{productId}/delete")
 	public ResponseEntity<ApiResponse> deleteProductHandler(@PathVariable Long productId) throws ProductException{
