@@ -1,5 +1,6 @@
 package com.shopeefy.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -37,11 +38,22 @@ public class AdminProductController {
 //		return new ResponseEntity<Product>(createdProduct,HttpStatus.ACCEPTED);
 //		
 //	}
-	@PostMapping("")
-	public ResponseEntity<Product> createProductHandler(@RequestBody CreateProductRequest req) throws ProductException {
-	    Product createdProduct = productService.createProduct(req);
-	    return new ResponseEntity<Product>(createdProduct, HttpStatus.CREATED);
+	
+	@PostMapping("/")
+	public ResponseEntity<List<Product>> createProductsHandler(@RequestBody List<CreateProductRequest> reqList) throws ProductException {
+	    List<Product> createdProducts = new ArrayList<>();
+	    for (CreateProductRequest req : reqList) {
+	        createdProducts.add(productService.createProduct(req));
+	    }
+	    return new ResponseEntity<>(createdProducts, HttpStatus.ACCEPTED);
 	}
+
+
+//	@PostMapping("/")
+//	public ResponseEntity<Product> createProductHandler(@RequestBody CreateProductRequest req) throws ProductException {
+//	    Product createdProduct = productService.createProduct(req);
+//	    return new ResponseEntity<Product>(createdProduct, HttpStatus.CREATED);
+//	}
 
 	
 	@DeleteMapping("/{productId}/delete")

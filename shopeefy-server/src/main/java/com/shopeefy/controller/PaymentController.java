@@ -1,6 +1,7 @@
 package com.shopeefy.controller;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,9 +42,11 @@ public class PaymentController {
 
 	    @Value("${razorpay.api.secret}")
 	    private String apiSecret;
-	
+	@Autowired
 	private OrderService orderService;
+	@Autowired
 	private UserService userService;
+	@Autowired
 	private OrderRepository orderRepository;
 	
 	public PaymentController(OrderService orderService,UserService userService,OrderRepository orderRepository) {
@@ -64,7 +67,7 @@ public class PaymentController {
 
 		      // Create a JSON object with the payment link request parameters
 		      JSONObject paymentLinkRequest = new JSONObject();
-		      paymentLinkRequest.put("amount",order.getTotalPrice()* 100);
+		      paymentLinkRequest.put("amount",order.getTotalDiscountedPrice()* 100);
 		      paymentLinkRequest.put("currency","INR");    
 //		      paymentLinkRequest.put("expire_by",1691097057);
 //		      paymentLinkRequest.put("reference_id",order.getId().toString());
@@ -87,7 +90,9 @@ public class PaymentController {
 		      paymentLinkRequest.put("reminder_enable",true);
 
 		      // Set the callback URL and method
-		      paymentLinkRequest.put("callback_url","http://localhost:4200/payment-success?order_id="+orderId);
+//		      paymentLinkRequest.put("callback_url","http://localhost:5173/payment-success?order_id="+orderId);
+
+		      paymentLinkRequest.put("callback_url","http://localhost:5173/payment/"+orderId);
 		      paymentLinkRequest.put("callback_method","get");
 
 		      // Create the payment link using the paymentLink.create() method
